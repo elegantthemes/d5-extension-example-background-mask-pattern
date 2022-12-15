@@ -1,6 +1,25 @@
 # D5 Extension Example: Background Mask and Pattern
+[D5] Example of a WP Plugin that extends D5 to include additional Masks and Patterns in the Background `Mask Styles` and `Pattern Styles` dropdown menu.
 
-URL: https://github.com/elegantthemes/d5-extension-example-background-mask-pattern
+## Installation
+You need to install **Yarn 3.2.0** and set the `nodeLinker` to `node-modules`
+```
+yarn set version 3.2.0 && yarn config set nodeLinker node-modules
+```
+Then, install the project dependencies:
+```
+yarn
+```
+Now, start the project:
+```
+yarn start
+```
 
-## Description
-Adds custom Background Masks and Background Patterns to Divi.
+## Available Commands
+Some `yarn` commands are available for your development and tests.
+
+### `yarn start`
+It will start the webpack compiler for development with watch mode.
+
+### `yarn build`
+It will build all JS and CSS assets for production.
