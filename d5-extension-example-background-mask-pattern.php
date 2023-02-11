@@ -31,16 +31,17 @@ along with D5 Extension Example: Background Mask and Pattern. If not, see https:
  * @since ??
  */
 function d5_extension_example_background_mask_pattern_enqueue_scripts() {
-    if ( function_exists( 'et_builder_d5_enabled' ) && et_builder_d5_enabled() && et_core_is_fb_enabled() ) {
-        $plugin_dir_url = plugin_dir_url( __FILE__ );
+	if ( function_exists( 'et_builder_d5_enabled' ) && et_builder_d5_enabled() && et_core_is_fb_enabled() ) {
+		$plugin_dir_url = plugin_dir_url( __FILE__ );
 
-        wp_enqueue_script(
-            "d5-extension-example-background-mask-pattern-bundle-script",
-            "{$plugin_dir_url}scripts/bundle.js",
-            array( 'divi-mask-and-pattern-library' ),
-            '0.1.3-alpha',
-            true
-        );
-    }
+		wp_enqueue_script(
+			'd5-extension-example-background-mask-pattern-bundle-script',
+			"{$plugin_dir_url}scripts/bundle.js",
+			array( 'divi-mask-and-pattern-library' ),
+			'0.1.3-alpha',
+			true
+		);
+	}
 }
 add_action( 'et_vb_assets_after_enqueue_package_script', 'd5_extension_example_background_mask_pattern_enqueue_scripts' );
+
