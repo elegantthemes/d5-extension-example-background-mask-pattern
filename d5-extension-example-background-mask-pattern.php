@@ -99,7 +99,7 @@ if ( ! function_exists( 'd5_extension_example_background_mask_pattern_add_patter
  * Add custom background patterns.
  *
  * Collects all the patterns from the plugin and adds them to the existing
- * patterns using the `et_pattern_style_list` filter.
+ * patterns using the `divi_mask_and_pattern_library_pattern` filter.
  *
  * @since ??
  *
