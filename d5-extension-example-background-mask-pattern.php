@@ -3,7 +3,7 @@
 Plugin Name: D5 Extension Example: Background Mask and Pattern
 Plugin URI:  https://github.com/elegantthemes/d5-extension-example-background-mask-pattern
 Description: Adds Custom Background Masks and Background Patterns
-Version:     0.1.3
+Version:     0.1.4
 Author:      Elegant Themes
 Author URI:  https://elegantthemes.com
 License:     GPL2
@@ -38,10 +38,9 @@ function d5_extension_example_background_mask_pattern_enqueue_scripts() {
 			'd5-extension-example-background-mask-pattern-bundle-script',
 			"{$plugin_dir_url}scripts/bundle.js",
 			array( 'divi-mask-and-pattern-library' ),
-			'0.1.3-alpha',
+			'0.1.4',
 			true
 		);
 	}
 }
 add_action( 'et_vb_assets_after_enqueue_package_script', 'd5_extension_example_background_mask_pattern_enqueue_scripts' );
-
