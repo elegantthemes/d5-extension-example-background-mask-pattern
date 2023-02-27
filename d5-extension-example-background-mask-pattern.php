@@ -25,6 +25,8 @@ You should have received a copy of the GNU General Public License
 along with D5 Extension Example: Background Mask and Pattern. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
+use ET\Builder\Framework\Utility\Filesystem;
+
 /**
  * Enqueue style and scripts.
  *
@@ -44,3 +46,91 @@ function d5_extension_example_background_mask_pattern_enqueue_scripts() {
 	}
 }
 add_action( 'et_vb_assets_after_enqueue_package_script', 'd5_extension_example_background_mask_pattern_enqueue_scripts' );
+
+if ( ! function_exists( 'd5_extension_example_background_mask_pattern_add_masks' ) ) :
+	/**
+	 * Add custom background masks.
+	 *
+	 * Collects all the masks from the plugin and adds them to the existing masks
+	 * using the `divi_mask_and_pattern_library_mask` filter.
+	 *
+	 * @since ??
+	 *
+	 * @param array $masks The existing masks.
+	 *
+	 * @throws Exception Throw error when the mask json file does not exist.
+	 *
+	 * @return array The existing masks combined with the custom masks.
+	 */
+	function d5_extension_example_background_mask_pattern_add_masks( $masks ) {
+		$filesystem = Filesystem::get();
+
+		// Define the path to our additional mask SVG files.
+		$base_dir = plugin_dir_path( __FILE__ ) . 'src/components/mask-svg/components/';
+
+		// Define the masks we want to add.
+		$map = [ 'mask-example-1', 'mask-example-2' ];
+
+		// Initialize the custom masks array.
+		$custom_mask_style_list = [];
+
+		foreach ( $map as $json ) {
+			$json_file = "$base_dir/$json.json";
+
+			if ( ! file_exists( $json_file ) ) {
+				throw new Exception( 'File does not exist: ' . $json_file, 1 );
+			}
+
+			$json_data = json_decode( $filesystem->get_contents( $json_file ), true );
+
+			$custom_mask_style_list[ $json ] = $json_data;
+		}
+
+		return array_merge( $masks, $custom_mask_style_list );
+	}
+	add_filter( 'divi_mask_and_pattern_library_mask', 'd5_extension_example_background_mask_pattern_add_masks' );
+endif;
+
+if ( ! function_exists( 'd5_extension_example_background_mask_pattern_add_patterns' ) ) :
+	/**
+	 * Add custom background patterns.
+	 *
+	 * Collects all the patterns from the plugin and adds them to the existing
+	 * patterns using the `divi_mask_and_pattern_library_pattern` filter.
+	 *
+	 * @since ??
+	 *
+	 * @param array $patterns The existing patterns.
+	 *
+	 * @throws Exception Throw error when the mask json file does not exist.
+	 *
+	 * @return array The existing patterns combined with the custom patterns.
+	 */
+	function d5_extension_example_background_mask_pattern_add_patterns( $patterns ) {
+		$filesystem = Filesystem::get();
+
+		// Define the path to our additional mask SVG files.
+		$base_dir = plugin_dir_path( __FILE__ ) . 'src/components/pattern-svg/components/';
+
+		// Define the masks we want to add.
+		$map = [ 'pattern-example-1', 'pattern-example-2' ];
+
+		// Initialize the custom masks array.
+		$custom_pattern_style_list = [];
+
+		foreach ( $map as $json ) {
+			$json_file = "$base_dir/$json.json";
+
+			if ( ! file_exists( $json_file ) ) {
+				throw new Exception( 'File does not exist: ' . $json_file, 1 );
+			}
+
+			$json_data = json_decode( $filesystem->get_contents( $json_file ), true );
+
+			$custom_pattern_style_list[ $json ] = $json_data;
+		}
+
+		return array_merge( $patterns, $custom_pattern_style_list );
+	}
+	add_filter( 'divi_mask_and_pattern_library_pattern', 'd5_extension_example_background_mask_pattern_add_patterns' );
+endif;
