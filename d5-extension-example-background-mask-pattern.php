@@ -52,7 +52,7 @@ if ( ! function_exists( 'd5_extension_example_background_mask_pattern_add_masks'
  * Add custom background masks.
  *
  * Collects all the masks from the plugin and adds them to the existing masks
- * using the `et_mask_style_list` filter.
+ * using the `divi_mask_and_pattern_library_mask` filter.
  *
  * @since ??
  *
