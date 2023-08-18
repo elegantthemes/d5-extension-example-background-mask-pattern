@@ -45,7 +45,7 @@ function d5_extension_example_background_mask_pattern_enqueue_scripts() {
 		);
 	}
 }
-add_action( 'et_vb_assets_after_enqueue_package_script', 'd5_extension_example_background_mask_pattern_enqueue_scripts' );
+add_action( 'divi_visual_builder_assets_after_enqueue_package_script', 'd5_extension_example_background_mask_pattern_enqueue_scripts' );
 
 if ( ! function_exists( 'd5_extension_example_background_mask_pattern_add_masks' ) ) :
 	/**
