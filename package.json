@@ -5,7 +5,6 @@
   "author": "Elegant Themes",
   "license": "GPL-2.0-or-later",
   "scripts": {
-    "setup-yarn": "yarn set version 3.2.0 && yarn config set nodeLinker node-modules",
     "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress"
   },
@@ -16,8 +15,8 @@
     "@babel/preset-env": "^7.18.9",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
-    "@divi/types": "npm:divi-types@^1.0.4",
-    "@types/divi__mask-and-pattern-library": "npm:divi-types-mask-and-pattern-library@^1.0.4",
+    "@divi/types": "npm:divi-types@^1.0.5",
+    "@types/divi__mask-and-pattern-library": "npm:divi-types-mask-and-pattern-library@^1.0.5",
     "@types/lodash": "^4.14.182",
     "@wordpress/hooks": "^3.18.0",
     "babel-loader": "^8.2.3",
@@ -28,6 +27,5 @@
     "typescript": "^4.7.4",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
-  },
-  "packageManager": "yarn@3.2.0"
+  }
 }
